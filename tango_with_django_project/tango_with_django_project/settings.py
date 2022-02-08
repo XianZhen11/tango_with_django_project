@@ -30,6 +30,9 @@ SECRET_KEY = '6oh@7p0tqf9umpolsc-#zts=362i@=7+0xh5ien(1$)fo^89km'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+SESSION_COOKIE_AGE = 1209600
+
 ALLOWED_HOSTS = []
 
 
@@ -104,8 +107,17 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': { 'min_length': 6, }}
 ]
 
+PASSWORD_HASHERS = [
+    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+    'django.contrib.auth.hashers.BCryptPasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
@@ -126,4 +138,5 @@ USE_TZ = True
 
 STATICFILES_DIRS = [STATIC_DIR, ]
 
+LOGIN_URL = 'rango:login'
 STATIC_URL = '/static/'
