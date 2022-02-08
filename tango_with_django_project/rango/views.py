@@ -12,7 +12,11 @@ from django.http import HttpResponse
 from django.urls import reverse
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
+<<<<<<< HEAD
 from datetime import datetime
+=======
+
+>>>>>>> f3fb99d7fd0d50c51e3a62869c4111521ab866fe
 
 def index(request):
     category_list = Category.objects.order_by('-likes')[:5]
@@ -23,6 +27,7 @@ def index(request):
     context_dict['categories'] = category_list
     context_dict['pages'] = page_list
 
+<<<<<<< HEAD
     visitor_cookie_handler(request)
     response = render(request, 'rango/index.html', context=context_dict)
     return response
@@ -49,6 +54,8 @@ def visitor_cookie_handler(request):
     request.session['visits'] = visits
 
 
+=======
+>>>>>>> f3fb99d7fd0d50c51e3a62869c4111521ab866fe
 @login_required
 def user_logout(request):
     logout(request)
